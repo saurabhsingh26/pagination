@@ -10,7 +10,7 @@
 .App{
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 200px;
   width: 130px;
   background-color: #ccc;
   padding: 10px;
@@ -26,4 +26,25 @@
 }
 .App span{
   text-align: center;
+}
+
+.pagination{
+  padding: 10px;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination span{
+  padding: 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.pagination__selected{
+  background-color: rgb(30, 131, 156);
+  color: white;
 }
