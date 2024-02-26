@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -41,22 +42,41 @@ function App() {
       )}
       {products.length > 0 && (
         <div className="pagination">
-          {page > 1 && (
-            <span onClick={() => selectPageHandler(page - 1)}>◀️</span>
+          {page > 1 ? (
+            <span
+              onClick={() => selectPageHandler(page - 1)}
+              style={{ width: "10%", cursor: "pointer" }}
+            >
+              <LeftOutlined />
+            </span>
+          ) : (
+            <span style={{ width: "10%" }}></span>
           )}
 
-          {[...Array(totalPages)].map((_, i) => (
-            <span
-              className={page === i + 1 ? "pagination__selected" : ""}
-              onClick={() => selectPageHandler(i + 1)}
-              key={i}
-            >
-              {i + 1}
-            </span>
-          ))}
+          <span style={{ width: "80%" }}>
+            {[...Array(totalPages)].map((_, i) => (
+              <span
+                style={{ cursor: "pointer" }}
+                className={[
+                  page === i + 1 ? "pagination__selected" : "not_selected",
+                ]}
+                onClick={() => selectPageHandler(i + 1)}
+                key={i}
+              >
+                {i + 1}
+              </span>
+            ))}
+          </span>
 
-          {page < totalPages && (
-            <span onClick={() => selectPageHandler(page + 1)}>▶️</span>
+          {page < totalPages ? (
+            <span
+              onClick={() => selectPageHandler(page + 1)}
+              style={{ width: "10%", cursor: "pointer" }}
+            >
+              <RightOutlined />
+            </span>
+          ) : (
+            <span style={{ width: "10%" }}></span>
           )}
         </div>
       )}
